@@ -13,45 +13,19 @@ const UserForm = (props) => {
     const submitHandler = (event) => {
         event.preventDefault();
 
-        const prepareTheUserObject = () => {
+        if (userNameState.length === 0 && userAgeState === '') setAreAllFieldsBlank(true);
+        else if (userAgeState < 0) setIsIncorrectAge(true);
+        else {
+            setIsIncorrectAge(false);
+            setAreAllFieldsBlank(false);
+            
             const usersData = {
                 userName: userNameState,
                 userAge: userAgeState
             }
-
+    
             props.onAddToUsersThroughForm(usersData);
         }
-
-        // if (userNameState.length === 0 && userAgeState <= 0) props.isUserDataFilled(false);
-        // else props.isUserDataFilled(true);
-
-        // if (userNameState.length === 0) props.isUserNameFilled(false);
-        // else props.isUserNameFilled(true);
-
-        // if (userAgeState <= 0) props.isUserAgeFilled(false);
-        // else props.isUserAgeFilled(true);
-
-        if (userNameState.length === 0 && userAgeState == 0) setAreAllFieldsBlank(true);
-        else {
-            setAreAllFieldsBlank(false);
-            prepareTheUserObject();
-        }
-
-        // if (userAgeState < 0) {
-        //     setIsIncorrectAge(true);
-        // } else {
-        //     setIsIncorrectAge(false);
-        //     // prepareTheUserObject();
-        // }
-
-        // if (userAgeState < 0) setIsError(true);
-
-        // const usersData = {
-        //     userName: userNameState,
-        //     userAge: userAgeState
-        // }
-
-        // props.onAddToUsersThroughForm(usersData);
 
         setUserNameState('');
         setUserAgeState('');
@@ -64,7 +38,7 @@ const UserForm = (props) => {
     }
 
     const userAgeHandler = (event) => {
-        const enteredUserAge = event.target.value;
+        const enteredUserAge = +event.target.value;
         setUserAgeState(enteredUserAge);
     }
 
