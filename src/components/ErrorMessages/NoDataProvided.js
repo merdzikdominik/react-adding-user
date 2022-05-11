@@ -3,10 +3,8 @@ import Card from '../Card/Card';
 import './NoDataProvided.css';
 
 const NoDataProvided = (props) => {
-    // const [isClicked, setIsClicked] = useState(false);
 
     const buttonHandler = () => {
-        // setIsClicked(true);
         props.isButtonClicked(true);
     }
 
