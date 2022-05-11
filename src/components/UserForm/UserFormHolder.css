@@ -1,0 +1,6 @@
+.userFormHolder {
+    overflow: hidden;
+    max-width: 500px;
+    margin: 2em auto;
+    justify-content: center;
+}
